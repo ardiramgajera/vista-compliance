@@ -32,3 +32,4 @@ MAIL_SERVER_SETUP.md
 BACKLINK_STRATEGY.md
 .vercel
 .env*
+*.md

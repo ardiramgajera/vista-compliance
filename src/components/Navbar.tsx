@@ -110,23 +110,47 @@ const Navbar = () => {
 
   const handleClick = (href: string) => {
     setTimeout(() => setMobileOpen(false), 150);
+    const scrollToSection = (target: string) => {
+      const id = target.startsWith("#") ? target.slice(1) : target;
+      const offset = 80;
 
-    const scrollToSection = (targetId: string) => {
-      const element = document.querySelector(targetId);
-      if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
+      const doScroll = (el: HTMLElement) => {
+        const elementPosition = el.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - offset;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+      };
+
+      const el = document.getElementById(id);
+      if (el) {
+        doScroll(el);
+        return;
       }
+
+      // If element isn't present yet (lazy-loaded), retry for a short period
+      let attempts = 0;
+      const maxAttempts = 30; // ~3s
+      const iv = window.setInterval(() => {
+        attempts += 1;
+        const retryEl = document.getElementById(id);
+        if (retryEl) {
+          window.clearInterval(iv);
+          doScroll(retryEl);
+        } else if (attempts >= maxAttempts) {
+          window.clearInterval(iv);
+        }
+      }, 100);
     };
 
-    if (isIndependentPage && href.startsWith("#")) {
-      navigate("/", { replace: false });
-      setTimeout(() => scrollToSection(href), 100);
-    } else if (href.startsWith("#")) {
-      setActiveSection(href.slice(1));
-      scrollToSection(href);
+    if (href.startsWith("#")) {
+      // If we're on an independent page, navigate home first and then attempt to scroll.
+      if (isIndependentPage) {
+        navigate("/", { replace: false });
+        // Give React time to mount route and lazy sections; scrollToSection will retry until found.
+        setTimeout(() => scrollToSection(href), 120);
+      } else {
+        setActiveSection(href.slice(1));
+        scrollToSection(href);
+      }
     }
   };
 
