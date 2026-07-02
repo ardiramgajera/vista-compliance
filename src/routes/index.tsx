@@ -7,10 +7,10 @@ import { ShieldHalf, ShieldCheck, BarChart3, Bell, FileCheck, Lock, Check } from
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ComplianceVista — Modern Compliance Management" },
-      { name: "description", content: "Track GDPR, ISO 27001, SOC 2 and HIPAA compliance in one clean dashboard. Audit-ready in minutes." },
-      { property: "og:title", content: "ComplianceVista — Modern Compliance Management" },
-      { property: "og:description", content: "Track GDPR, ISO 27001, SOC 2 and HIPAA compliance in one clean dashboard." },
+      { title: "ComplianceVista | Salesforce Compliance Management" },
+      { name: "description", content: "Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated workflows." },
+      { property: "og:title", content: "ComplianceVista | Salesforce Compliance Management" },
+      { property: "og:description", content: "Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated workflows." },
     ],
   }),
   component: Index,

@@ -116,7 +116,7 @@ if (empty($recaptcha_secret)) {
 $smtpUser = getenv('SMTP_USER') ?: 'zeon6080@gmail.com';
 $smtpPass = getenv('SMTP_PASS') ?: 'jtwb crev jxzb vvoe';
 
-$logoUrl = "https://compliance-quest-page.vercel.app/ComplianceVista-logo.svg"; // ComplianceVista official logo
+$logoUrl = "https://compliancevista.com/ComplianceVista-logo.svg"; // ComplianceVista official logo
 
 // Send the "Sales Team" email to your temp testing recipients
 $testRecipients = ['parambuddh26@gmail.com', 'gajeramilan518@gmail.com'];

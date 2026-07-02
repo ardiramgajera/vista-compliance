@@ -26,13 +26,13 @@ const TermsOfUse = () => {
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold" style={{ color: '#37C643' }}>Terms of Use</h1>
                 </div>
                 <a
-                  href="https://surveyvista.com/ardira-appexchange-app-terms-and-conditions/"
+                  href="/terms-of-use"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: '#37C643' }}
                   className="hover:underline font-semibold whitespace-normal md:whitespace-nowrap md:mt-2 text-sm md:text-base"
                 >
-                  Ardira AppExchange App Terms and Conditions
+                  ComplianceVista Terms of Use
                 </a>
               </div>
             </div>
@@ -41,7 +41,7 @@ const TermsOfUse = () => {
             <div className="prose prose-invert max-w-none space-y-6 md:space-y-8 text-sm md:text-base text-left md:text-justify">
               <section className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
-                  The website located at <a href="https://surveyvista.com" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">www.compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista", "the Company," "we," "us," and "our"). These Terms of Use (the "Terms") govern your access to and use of the Website.
+                  The website located at <a href="https://compliancevista.com" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">www.compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista", "the Company," "we," "us," and "our"). These Terms of Use (the "Terms") govern your access to and use of the Website.
                 </p>
               </section>
 
@@ -57,7 +57,7 @@ const TermsOfUse = () => {
                   The Website are provided solely for informational purposes and the purposes of enabling communication between you and the Company. The information provided is intended to be general in nature and does not necessarily address all the terms, exclusions, and conditions applicable to our products and services.
                 </p>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
-                  We do not warrant the accuracy, completeness, or usefulness of this information at any particular time. Any reliance you place on such information is strictly at your own risk. The Company disclaims all liability and responsibility arising from any reliance placed on such content by you or any other visitor to our Website, or by anyone who may be informed of any of its contents. Any information you provide or that is collected by the Company through the Website shall be handled in accordance with the Website's <a href="https://compliance-quest-page.vercel.app/privacy-policy" style={{ color: '#37C643' }} className="hover:underline">Privacy Policy</a>, which is hereby incorporated by reference.
+                  We do not warrant the accuracy, completeness, or usefulness of this information at any particular time. Any reliance you place on such information is strictly at your own risk. The Company disclaims all liability and responsibility arising from any reliance placed on such content by you or any other visitor to our Website, or by anyone who may be informed of any of its contents. Any information you provide or that is collected by the Company through the Website shall be handled in accordance with the Website's <a href="/privacy-policy" style={{ color: '#37C643' }} className="hover:underline">Privacy Policy</a>, which is hereby incorporated by reference.
                 </p>
               </section>
 
