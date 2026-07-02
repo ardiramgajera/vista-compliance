@@ -5,11 +5,45 @@ const FooterSection = () => {
   const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
+  const scrollToSection = (sectionId: string) => {
+    const id = sectionId.startsWith("#") ? sectionId.slice(1) : sectionId;
+    const offset = 80;
+
+    const doScroll = (element: HTMLElement) => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    };
+
+    const el = document.getElementById(id);
+    if (el) {
+      doScroll(el);
+      return;
+    }
+
+    let attempts = 0;
+    const maxAttempts = 60;
+    const interval = window.setInterval(() => {
+      attempts += 1;
+      const retryEl = document.getElementById(id);
+      if (retryEl) {
+        window.clearInterval(interval);
+        doScroll(retryEl);
+      } else if (attempts >= maxAttempts) {
+        window.clearInterval(interval);
+      }
+    }, 100);
+  };
+
   const navigateToSection = (sectionId: string) => {
     if (window.location.pathname === '/') {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection(sectionId);
     } else {
-      navigate(`/#${sectionId}`);
+      navigate('/', { replace: false });
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+        scrollToSection(sectionId);
+      }, 400);
     }
   };
 
@@ -101,6 +135,7 @@ const FooterSection = () => {
               <li><button onClick={() => navigateToSection('features')} className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">Features</button></li>
               <li><button onClick={() => navigateToSection('benefits')} className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">Benefits</button></li>
               <li><button onClick={() => navigateToSection('use-cases')} className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">Use Cases</button></li>
+              <li><button onClick={() => navigateToSection('contact')} className="text-navy-foreground/80 hover:text-primary transition-colors duration-300 bg-none border-none cursor-pointer p-0 text-left">Contact Us</button></li>
             </ul>
           </div>
 
