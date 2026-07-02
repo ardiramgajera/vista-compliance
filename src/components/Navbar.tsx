@@ -126,18 +126,23 @@ const Navbar = () => {
         return;
       }
 
-      // If element isn't present yet (lazy-loaded), retry for a short period
       let attempts = 0;
-      const maxAttempts = 30; // ~3s
+      const maxAttempts = 60; // ~6s
       const iv = window.setInterval(() => {
-        attempts += 1;
         const retryEl = document.getElementById(id);
         if (retryEl) {
           window.clearInterval(iv);
           doScroll(retryEl);
-        } else if (attempts >= maxAttempts) {
-          window.clearInterval(iv);
+          return;
         }
+
+        attempts += 1;
+        if (attempts >= maxAttempts) {
+          window.clearInterval(iv);
+          return;
+        }
+
+        window.scrollBy({ top: window.innerHeight * 0.5, behavior: "auto" });
       }, 100);
     };
 
