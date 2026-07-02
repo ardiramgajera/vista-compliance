@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Home } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const NotFound = () => {
   const location = useLocation();
@@ -13,6 +14,9 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden px-4">
+      <Helmet>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       {/* Background decorative elements */}
       <motion.div
         className="absolute -top-40 -right-40 w-80 h-80 rounded-full blur-3xl"

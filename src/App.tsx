@@ -8,6 +8,8 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { Agentation } from "agentation";
 import { AppLayout } from "@/components/AppLayout";
+import { RobotsManager } from "@/components/seo/RobotsManager";
+import { CanonicalManager } from "@/components/seo/CanonicalManager";
 
 // Lazy load page components to split javascript chunks and minimize initial load size
 const Index = lazy(() => import("./pages/Index.tsx"));
@@ -80,6 +82,8 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <RobotsManager />
+            <CanonicalManager />
             <Suspense fallback={<RouteSkeleton />}>
               <Routes>
                 <Route path="/" element={<Index />} />

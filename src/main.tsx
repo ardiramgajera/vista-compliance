@@ -2,6 +2,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 
+import { HelmetProvider } from 'react-helmet-async';
+
 const rootElement = document.getElementById("root");
 
 if (!rootElement) {
@@ -10,7 +12,11 @@ if (!rootElement) {
 }
 
 try {
-  createRoot(rootElement).render(<App />);
+  createRoot(rootElement).render(
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  );
 } catch (error) {
   console.error("Failed to mount app:", error);
   rootElement.innerHTML = `

@@ -1,85 +1,66 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light only" />
-    <meta name="theme-color" content="#00C896" />
-    <meta name="robots" content="noindex, nofollow" />
-    
-    <!-- Local font preloads (Poppins is self-hosted, no external font dependencies) -->
-    <link rel="preload" href="/fonts/poppins-v20-latin-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/poppins-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/poppins-v20-latin-800.woff2" as="font" type="font/woff2" crossorigin>
-    
-    <!-- Preconnect to external third-party script domains -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google.com" />
-    <link rel="dns-prefetch" href="https://www.google.com" />
-    <link rel="dns-prefetch" href="https://maps.googleapis.com" />
 
-    
-    <!-- Google Tag Manager - Deferred to first user interaction for mobile performance -->
-    <script>
-      (function() {
-        var loaded = false;
-        function initGTM() {
-          if (loaded) return;
-          loaded = true;
-          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-MS38XLX4');
-        }
-        ['scroll','mousemove','touchstart','keydown'].forEach(function(e) {
-          window.addEventListener(e, initGTM, {once: true, passive: true});
-        });
-        setTimeout(initGTM, 5000);
-      })();
-    </script>
-    <!-- End Google Tag Manager -->
-    
-    <!-- Primary Meta Tags -->
-    <title>ComplianceVista | Salesforce Compliance Management</title>
-    <meta name="title" content="ComplianceVista | Salesforce Compliance Management">
-    <meta name="description" content="Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated compliance workflows.">
-    <meta name="keywords" content="Salesforce compliance, governance solution, compliance management, audit automation, vendor risk assessment, SurveyVista, enterprise compliance">
-    <meta name="author" content="Ardira Technologies" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="theme-color" content="#00C896" />
+  <link id="canonical-link" rel="canonical" href="https://compliancevista.com/" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://compliancevista.com/">
-    <meta property="og:title" content="ComplianceVista | Salesforce Compliance Management">
-    <meta property="og:description" content="Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated compliance workflows.">
-    <meta property="og:image" content="https://compliancevista.com/company-images/cv-hero-new.webp">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="ComplianceVista Salesforce compliance dashboard">
-    <meta property="og:logo" content="https://compliancevista.com/ComplianceVista-logo.svg">
-    <meta property="og:locale" content="en_US">
+  <!-- Local font preloads (Poppins is self-hosted, no external font dependencies) -->
+  <link rel="preload" href="/fonts/poppins-v20-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/poppins-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/poppins-v20-latin-800.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://compliancevista.com/">
-    <meta property="twitter:title" content="ComplianceVista | Salesforce Compliance Management">
-    <meta property="twitter:description" content="Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated compliance workflows.">
-    <meta property="twitter:image" content="https://compliancevista.com/company-images/cv-hero-new.webp">
+  <!-- Preconnect to external third-party script domains -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="preconnect" href="https://www.google.com" />
+  <link rel="dns-prefetch" href="https://www.google.com" />
+  <link rel="dns-prefetch" href="https://maps.googleapis.com" />
 
-    <link rel="canonical" href="https://compliancevista.com/" />
-    
-    <!-- Favicon - Multiple Sizes -->
-    <link rel="icon" type="image/webp" href="/favicon.webp" sizes="any" />
-    <link rel="shortcut icon" href="/favicon.webp" />
-    <link rel="apple-touch-icon" href="/favicon.webp" />
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" as="image" href="/ComplianceVista-logo.svg">
-    <link rel="preload" as="image" href="/company-images/cv-hero-new.webp" type="image/webp" fetchpriority="high">
 
-    <!-- Schema Markup for SEO -->
-    <!-- Organization Schema -->
-    <script type="application/ld+json">
+  <!-- Google Tag Manager - Deferred to first user interaction for mobile performance -->
+  <script>
+    (function () {
+      var loaded = false;
+      function initGTM() {
+        if (loaded) return;
+        loaded = true;
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+              new Date().getTime(), event: 'gtm.js'
+          }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MS38XLX4');
+      }
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (e) {
+        window.addEventListener(e, initGTM, { once: true, passive: true });
+      });
+      setTimeout(initGTM, 5000);
+    })();
+  </script>
+  <!-- End Google Tag Manager -->
+
+
+  <!-- Dynamic Meta Tags are managed by PageSeo Component (react-helmet-async) -->
+  <link rel="canonical" href="https://compliancevista.com/" />
+
+
+  <!-- Favicon - Multiple Sizes -->
+  <link rel="icon" type="image/webp" href="/favicon.webp" sizes="any" />
+  <link rel="shortcut icon" href="/favicon.webp" />
+  <link rel="apple-touch-icon" href="/favicon.webp" />
+
+  <!-- Preload critical resources -->
+  <link rel="preload" as="image" href="/ComplianceVista-logo.svg">
+  <link rel="preload" as="image" href="/company-images/cv-hero-new.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Schema Markup for SEO -->
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -100,8 +81,8 @@
     }
     </script>
 
-    <!-- Software Application Schema -->
-    <script type="application/ld+json">
+  <!-- Software Application Schema -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
@@ -122,13 +103,13 @@
       },
       "author": {
         "@type": "Organization",
-        "name": "Ardira Technologies"
+        "name": "Ardira Corporation"
       }
     }
     </script>
 
-    <!-- Service Schema -->
-    <script type="application/ld+json">
+  <!-- Service Schema -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Service",
@@ -150,8 +131,8 @@
     }
     </script>
 
-    <!-- BreadcrumbList Schema -->
-    <script type="application/ld+json">
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -183,47 +164,55 @@
       ]
     }
     </script>
-  </head>
+</head>
 
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS38XLX4"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
-    <div id="root">
-      <style>
-        .initial-loader-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          width: 100vw;
-          background-color: #ffffff;
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS38XLX4" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div id="root">
+    <style>
+      .initial-loader-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: #ffffff;
+      }
+
+      .initial-loader-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid rgba(55, 198, 67, 0.2);
+        border-top-color: #37C643;
+        border-radius: 50%;
+        animation: initial-loader-spin 1s linear infinite;
+      }
+
+      @keyframes initial-loader-spin {
+        0% {
+          transform: rotate(0deg);
         }
-        .initial-loader-spinner {
-          width: 48px;
-          height: 48px;
-          border: 4px solid rgba(55, 198, 67, 0.2);
-          border-top-color: #37C643;
-          border-radius: 50%;
-          animation: initial-loader-spin 1s linear infinite;
+
+        100% {
+          transform: rotate(360deg);
         }
-        @keyframes initial-loader-spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      </style>
-      <div class="initial-loader-container">
-        <div class="initial-loader-spinner"></div>
-      </div>
+      }
+    </style>
+    <div class="initial-loader-container">
+      <div class="initial-loader-spinner"></div>
     </div>
-    
-    <!-- ReCAPTCHA v3 is loaded globally on app mount via useRecaptcha hook -->
-    
-    <script type="module" src="/src/main.tsx"></script>
-    
-    <!-- GA4 is managed via Google Tag Manager (GTM-MS38XLX4) -->
-  </body>
+  </div>
+
+  <!-- ReCAPTCHA v3 is loaded globally on app mount via useRecaptcha hook -->
+
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- GA4 is managed via Google Tag Manager (GTM-MS38XLX4) -->
+</body>
+
 </html>

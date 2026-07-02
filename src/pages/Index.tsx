@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FooterSection from "@/components/FooterSection";
 import LazySection from "@/components/LazySection";
+import { PageSeo } from "@/components/seo/PageSeo";
 
 // Lazy load below-the-fold sections for better performance
 const ProblemSection = lazy(() => 
@@ -62,6 +63,10 @@ const SectionSkeleton = () => (
 const Index = () => {
   return (
     <>
+      <PageSeo 
+        title="Home"
+        description="Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated compliance workflows."
+      />
       <Navbar />
       <main>
         <HeroSection />
