@@ -34,7 +34,38 @@ const App = () => {
   const { loadRecaptcha } = useRecaptcha();
 
   useEffect(() => {
-    loadRecaptcha();
+    // 1. Load reCAPTCHA hook after a brief timeout (5 seconds after page load)
+    const timeoutId = setTimeout(() => {
+      loadRecaptcha();
+    }, 5000);
+
+    // 2. Document-wide click/touch listener for mobile toggle
+    const handleDocumentClick = (e: MouseEvent | TouchEvent) => {
+      // Disable this listener on fine-pointer devices (desktops) that support native :hover states
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        return;
+      }
+
+      const target = e.target as HTMLElement;
+      const badge = document.querySelector('.grecaptcha-badge');
+      
+      if (!badge) return;
+
+      if (badge.contains(target) || target.closest('.grecaptcha-badge')) {
+        badge.classList.toggle('is-open');
+      } else {
+        badge.classList.remove('is-open');
+      }
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener('touchstart', handleDocumentClick, { passive: true });
+
+    return () => {
+      clearTimeout(timeoutId);
+      document.removeEventListener('click', handleDocumentClick);
+      document.removeEventListener('touchstart', handleDocumentClick);
+    };
   }, [loadRecaptcha]);
 
   return (
