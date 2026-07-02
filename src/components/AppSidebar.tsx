@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { useLocation, Link } from "react-router-dom";
 import { LayoutDashboard, ShieldCheck, ScrollText, Settings, ShieldHalf } from "lucide-react";
 import {
   Sidebar,
@@ -21,7 +21,7 @@ const items = [
 ];
 
 export function AppSidebar() {
-  const currentPath = useRouterState({ select: (s) => s.location.pathname });
+  const currentPath = useLocation().pathname;
 
   return (
     <Sidebar collapsible="icon">
