@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -9,12 +8,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { complianceItems, type ComplianceStatus } from "@/lib/compliance-data";
 import { Plus, Download } from "lucide-react";
 
-export const Route = createFileRoute("/_app/compliance")({
-  head: () => ({ meta: [{ title: "Compliance Tracker — ComplianceVista" }] }),
-  component: Tracker,
-});
-
-function Tracker() {
+export default function Compliance() {
   const [q, setQ] = useState("");
   const [status, setStatus] = useState<string>("all");
   const [fw, setFw] = useState<string>("all");

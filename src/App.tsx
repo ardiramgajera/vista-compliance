@@ -7,12 +7,17 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { Agentation } from "agentation";
+import { AppLayout } from "@/components/AppLayout";
 
 // Lazy load page components to split javascript chunks and minimize initial load size
 const Index = lazy(() => import("./pages/Index.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const TermsOfUse = lazy(() => import("./pages/TermsOfUse.tsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
+const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
+const Compliance = lazy(() => import("./pages/Compliance.tsx"));
+const Audit = lazy(() => import("./pages/Audit.tsx"));
+const Settings = lazy(() => import("./pages/Settings.tsx"));
 
 // Defer fallback skeleton loader
 const RouteSkeleton = () => (
@@ -80,6 +85,12 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/terms-of-use" element={<TermsOfUse />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route element={<AppLayout />}>
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/compliance" element={<Compliance />} />
+                  <Route path="/audit" element={<Audit />} />
+                  <Route path="/settings" element={<Settings />} />
+                </Route>
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

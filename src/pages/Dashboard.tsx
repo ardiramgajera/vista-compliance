@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import {
@@ -17,12 +16,7 @@ import { complianceTrend, frameworkBreakdown, auditLog, complianceItems } from "
 import { StatusBadge } from "@/components/StatusBadge";
 import { ArrowUpRight, ShieldCheck, AlertTriangle, Clock } from "lucide-react";
 
-export const Route = createFileRoute("/_app/dashboard")({
-  head: () => ({ meta: [{ title: "Dashboard — ComplianceVista" }] }),
-  component: Dashboard,
-});
-
-function Dashboard() {
+export default function Dashboard() {
   const score = 87;
   const atRisk = complianceItems.filter((c) => c.status === "At Risk").length;
   const nonCompliant = complianceItems.filter((c) => c.status === "Non-Compliant").length;
