@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Menu, X, ArrowUp, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "/ComplianceVista-logo.svg";
 import CalendlyModal from "./CalendlyModal";
@@ -110,6 +110,7 @@ const Navbar = () => {
 
   const handleClick = (href: string) => {
     setTimeout(() => setMobileOpen(false), 150);
+
     const scrollToSection = (target: string) => {
       const id = target.startsWith("#") ? target.slice(1) : target;
       const offset = 80;
@@ -120,38 +121,38 @@ const Navbar = () => {
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
       };
 
+      // Force all LazySection wrappers to render their children immediately
+      window.dispatchEvent(new Event("forceRenderSections"));
+
       const el = document.getElementById(id);
       if (el) {
         doScroll(el);
         return;
       }
 
+      // Sections are rendering — poll until the element appears in the DOM
       let attempts = 0;
-      const maxAttempts = 60; // ~6s
+      const maxAttempts = 40; // ~4s max
       const iv = window.setInterval(() => {
         const retryEl = document.getElementById(id);
         if (retryEl) {
           window.clearInterval(iv);
-          doScroll(retryEl);
+          setTimeout(() => doScroll(retryEl), 50);
           return;
         }
 
         attempts += 1;
         if (attempts >= maxAttempts) {
           window.clearInterval(iv);
-          return;
         }
-
-        window.scrollBy({ top: window.innerHeight * 0.5, behavior: "auto" });
       }, 100);
     };
 
     if (href.startsWith("#")) {
-      // If we're on an independent page, navigate home first and then attempt to scroll.
       if (isIndependentPage) {
         navigate("/", { replace: false });
-        // Give React time to mount route and lazy sections; scrollToSection will retry until found.
-        setTimeout(() => scrollToSection(href), 120);
+        // Wait for React to mount the home page, then force-render + scroll
+        setTimeout(() => scrollToSection(href), 450);
       } else {
         setActiveSection(href.slice(1));
         scrollToSection(href);

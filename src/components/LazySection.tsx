@@ -10,7 +10,7 @@ interface LazySectionProps {
 export const LazySection: React.FC<LazySectionProps> = ({
   children,
   fallback,
-  rootMargin = "300px",
+  rootMargin = "600px",
   minHeight = "400px",
 }) => {
   const [isInView, setIsInView] = useState(false);
@@ -36,7 +36,18 @@ export const LazySection: React.FC<LazySectionProps> = ({
       observer.observe(containerRef.current);
     }
 
-    return () => observer.disconnect();
+    // Listen for the custom event dispatched by nav-link clicks.
+    // When fired, immediately render this section so getElementById() works.
+    const forceRender = () => {
+      setIsInView(true);
+      observer.disconnect();
+    };
+    window.addEventListener("forceRenderSections", forceRender);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("forceRenderSections", forceRender);
+    };
   }, [rootMargin]);
 
   return (
@@ -44,8 +55,6 @@ export const LazySection: React.FC<LazySectionProps> = ({
       ref={containerRef}
       style={{
         minHeight: isInView ? "auto" : minHeight,
-        containIntrinsicSize: `auto ${minHeight}`,
-        contentVisibility: isInView ? "visible" : "auto",
       }}
     >
       {isInView ? children : fallback || null}

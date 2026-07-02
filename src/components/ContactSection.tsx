@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 import { useRecaptcha } from "../hooks/useRecaptcha";
@@ -389,7 +390,7 @@ const ContactSection = () => {
  
                   <p className="text-xs text-slate-500 leading-relaxed">
                     We're committed to your privacy. ComplianceVista uses the information you provide us to contact you about relevant content, products and services. You may unsubscribe from these communications at any time. For information, check out our{" "}
-                    <a href="/privacy-policy" className="font-medium hover:underline" style={{ color: "#37C643" }}>Privacy Policy</a>.
+                    <Link to="/privacy-policy" className="font-medium hover:underline" style={{ color: "#37C643" }}>Privacy Policy</Link>.
                   </p>
  
                   {/* Map */}

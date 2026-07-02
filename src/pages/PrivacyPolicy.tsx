@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 
@@ -30,9 +31,9 @@ const PrivacyPolicy = () => {
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Privacy Notice</h2>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
                   The website located at <a href="https://compliancevista.com" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">www.compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista," "the Company," "we," "us," and "our"). ComplianceVista respects your privacy and is committed to protecting your privacy through our compliance with this website privacy policy (the "Policy"). This Policy should be read in conjunction with our website{" "}
-                  <a href="/terms-of-use" style={{ color: '#37C643' }} className="hover:underline">
+                  <Link to="/terms-of-use" style={{ color: '#37C643' }} className="hover:underline">
                     Terms of Use
-                  </a>
+                  </Link>
                   , into which this Policy is incorporated by reference.
                 </p>
               </section>

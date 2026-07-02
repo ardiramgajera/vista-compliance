@@ -15,23 +15,27 @@ const FooterSection = () => {
       window.scrollTo({ top: offsetPosition, behavior: "smooth" });
     };
 
+    // Force all LazySection wrappers to render their children immediately
+    window.dispatchEvent(new Event("forceRenderSections"));
+
     const el = document.getElementById(id);
     if (el) {
       doScroll(el);
       return;
     }
 
+    // Sections are rendering — poll until the element appears in the DOM
     let attempts = 0;
-    const maxAttempts = 60;
+    const maxAttempts = 40;
     const interval = window.setInterval(() => {
-      attempts += 1;
       const retryEl = document.getElementById(id);
       if (retryEl) {
         window.clearInterval(interval);
-        doScroll(retryEl);
+        setTimeout(() => doScroll(retryEl), 50);
       } else if (attempts >= maxAttempts) {
         window.clearInterval(interval);
       }
+      attempts += 1;
     }, 100);
   };
 
@@ -40,10 +44,10 @@ const FooterSection = () => {
       scrollToSection(sectionId);
     } else {
       navigate('/', { replace: false });
+      // Wait for React to mount the home page, then force-render + scroll
       setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "auto" });
         scrollToSection(sectionId);
-      }, 400);
+      }, 450);
     }
   };
 
