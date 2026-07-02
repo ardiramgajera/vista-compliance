@@ -1,4 +1,5 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FooterSection from "@/components/FooterSection";
@@ -61,6 +62,25 @@ const SectionSkeleton = () => (
 );
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // If the user navigates directly to a URL with a hash (e.g. /#contact)
+    if (location.hash) {
+      // Force all lazy sections to render immediately
+      window.dispatchEvent(new Event('forceRenderSections'));
+      
+      // Wait a tick for React to mount the lazy-loaded DOM elements
+      setTimeout(() => {
+        const id = location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location.hash]);
+
   return (
     <>
       <PageSeo 
