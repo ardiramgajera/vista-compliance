@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,12 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Slack, Github, Mail, FileText } from "lucide-react";
 
-export const Route = createFileRoute("/_app/settings")({
-  head: () => ({ meta: [{ title: "Settings — ComplianceVista" }] }),
-  component: SettingsPage,
-});
-
-function SettingsPage() {
+export default function Settings() {
   const notifs = [
     { id: "due", label: "Upcoming control due dates", desc: "Reminders 7 days before due", on: true },
     { id: "fail", label: "Non-compliant findings", desc: "Immediate alert when a control fails", on: true },

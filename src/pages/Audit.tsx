@@ -1,12 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { auditLog } from "@/lib/compliance-data";
 import { CheckCircle2, FileUp, AlertTriangle, Bell, UserPlus, FileEdit, ShieldCheck, Plus, Activity } from "lucide-react";
-
-export const Route = createFileRoute("/_app/audit")({
-  head: () => ({ meta: [{ title: "Audit Log — ComplianceVista" }] }),
-  component: AuditPage,
-});
 
 function iconFor(action: string) {
   if (action.includes("Compliant")) return CheckCircle2;
@@ -20,7 +14,7 @@ function iconFor(action: string) {
   return Activity;
 }
 
-function AuditPage() {
+export default function Audit() {
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <div>
