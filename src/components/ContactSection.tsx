@@ -6,13 +6,11 @@ import { useRecaptcha } from "../hooks/useRecaptcha";
 
 // =====================================================
 // EDGE FUNCTION CONFIG
-// Prefer the production Supabase edge function. Keep the legacy
-// PHP path only as a last-resort fallback for older local setups.
+// Use the production Supabase edge function for all submissions.
 // =====================================================
 const LEAD_SUBMIT_URL =
   import.meta.env.VITE_LEAD_SUBMIT_URL ||
-  import.meta.env.VITE_CONTACT_API_URL ||
-  "/api/contact.php";
+  "https://wcwdswvijpaovpxmviyh.supabase.co/functions/v1/submit-lead";
 
 // Identifies which brand's form this is, so the edge function knows
 // which sites/email_templates rows to use. Set VITE_SITE_ID per
