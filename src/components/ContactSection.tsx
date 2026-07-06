@@ -9,8 +9,7 @@ import { useRecaptcha } from "../hooks/useRecaptcha";
 // Use the production Supabase edge function for all submissions.
 // =====================================================
 const LEAD_SUBMIT_URL =
-  import.meta.env.VITE_LEAD_SUBMIT_URL ||
-  "https://wcwdswvijpaovpxmviyh.supabase.co/functions/v1/submit-lead";
+  import.meta.env.VITE_LEAD_SUBMIT_URL;
 
 // Identifies which brand's form this is, so the edge function knows
 // which sites/email_templates rows to use. Set VITE_SITE_ID per

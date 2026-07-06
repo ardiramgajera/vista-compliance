@@ -13,7 +13,7 @@ declare global {
 }
 
 // Get reCAPTCHA Site Key from environment variable (public key, safe to expose)
-const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "6LdpZq4sAAAAACc87ym0oRUjKpiJ5nIsi_LWPxTh";
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 export const useRecaptcha = () => {
   const [isLoaded, setIsLoaded] = useState(false);
