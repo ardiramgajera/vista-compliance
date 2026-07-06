@@ -83,73 +83,72 @@
   <link rel="preload" as="image" href="/company-images/cv-hero-new.webp" type="image/webp" fetchpriority="high">
 
   <!-- Schema Markup for SEO -->
+  <!-- WebSite Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "ComplianceVista",
+      "url": "https://compliancevista.com/",
+      "inLanguage": "en-US"
+    }
+  </script>
+
   <!-- Organization Schema -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "ComplianceVista",
-      "url": "https://compliancevista.com",
+      "name": "Ardira Corporation",
+      "alternateName": "ComplianceVista",
+      "url": "https://compliancevista.com/",
       "logo": "https://compliancevista.com/ComplianceVista-logo.svg",
-      "description": "ComplianceVista is a 100% native Salesforce compliance management solution. Automate assessments, vendor risk management, and audit workflows. Enterprise-scale governance simplified.",
+      "description": "ComplianceVista is a 100% native Salesforce compliance management solution by Ardira Corporation. It automates assessments, vendor risk management, and audit workflows.",
       "sameAs": [
-        "https://www.compliancevista.com",
+        "https://www.compliancevista.com/",
         "https://twitter.com/ComplianceVista"
       ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Support",
-        "telephone": "1-669-777-6838",
-        "email": "support@ardira.com"
-      }
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "Customer Support",
+          "telephone": "+1-669-777-6838",
+          "email": "support@ardira.com"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "Sales",
+          "email": "info@ardira.com"
+        }
+      ]
     }
-    </script>
+  </script>
 
-  <!-- Software Application Schema -->
+  <!-- SoftwareApplication Schema -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "ComplianceVista",
-      "description": "Enterprise governance simplified. Salesforce-native compliance management solution for automating assessments, vendor risk management, and audit workflows.",
-      "url": "https://compliancevista.com",
+      "url": "https://compliancevista.com/",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web-based",
+      "description": "Enterprise governance simplified. Salesforce-native compliance management solution for audit readiness, risk management, evidence tracking, and compliance workflows.",
+      "image": "https://compliancevista.com/company-images/cv-hero-new.webp",
       "offers": {
         "@type": "Offer",
-        "price": "Contact for pricing",
-        "priceCurrency": "USD"
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://compliancevista.com/#contact"
       },
-     
-      "author": {
+      "publisher": {
         "@type": "Organization",
-        "name": "Ardira Corporation"
+        "name": "Ardira Corporation",
+        "url": "https://compliancevista.com/"
       }
     }
-    </script>
-
-  <!-- Service Schema -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Compliance Management Solution",
-      "description": "Comprehensive Salesforce-native compliance management, including automated audit trails, risk assessment, vendor management, and compliance reporting.",
-      "serviceType": "Enterprise Compliance Management",
-      "provider": {
-        "@type": "Organization",
-        "name": "Ardira Technologies",
-        "url": "https://www.ardira.com"
-      },
-      "areaServed": "Global",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Service",
-        "email": "support@ardira.com",
-        "telephone": "1-669-777-6838"
-      }
-    }
-    </script>
+  </script>
 
   <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
@@ -184,6 +183,48 @@
       ]
     }
     </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What makes ComplianceVista different from other compliance solutions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ComplianceVista is 100% native to Salesforce. It provides real-time compliance monitoring, automated audit trails, and intelligent risk scoring all within the platform your team already uses. Plus, it's designed specifically for enterprise-scale governance with multi-language support and industry-specific compliance frameworks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can ComplianceVista handle multiple regulatory frameworks simultaneously?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. ComplianceVista supports multiple regulatory frameworks (SOC2, ISO 27001, GDPR, HIPAA, and more) in a single instance. You can map different compliance requirements to different Salesforce objects and have automated workflows that enforce compliance across all regulations simultaneously. Custom frameworks can also be configured based on your specific needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What kind of reporting and dashboards does ComplianceVista provide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ComplianceVista includes pre-built compliance dashboards for executive reporting, regulatory audits, and operational monitoring. You get real-time KPI tracking, automated compliance metrics, audit-ready reports, and customizable dashboards. All reports can be exported in multiple formats and integrated with your existing Salesforce reporting infrastructure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data secure within ComplianceVista?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ComplianceVista is built entirely on Salesforce's secure infrastructure with SOC 2 Type II, ISO 27001, and GDPR compliance certifications. Data never leaves the Salesforce platform, ensuring enterprise-grade security. We implement role-based access controls, encryption at rest and in transit, and comprehensive audit trails for all data access."
+          }
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body>
