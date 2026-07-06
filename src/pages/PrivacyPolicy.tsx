@@ -3,6 +3,7 @@ import FooterSection from "@/components/FooterSection";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { PageSeo } from "@/components/seo/PageSeo";
 
 const PrivacyPolicy = () => {
   useEffect(() => {
@@ -11,6 +12,15 @@ const PrivacyPolicy = () => {
 
   return (
     <>
+      <PageSeo
+        title="Privacy Policy"
+        description="Read how ComplianceVista collects, uses, and protects personal information across the website and product experience."
+        path="/privacy-policy"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Privacy Policy', path: '/privacy-policy' },
+        ]}
+      />
       <Navbar />
       <main className="min-h-screen pt-24 md:pt-32 pb-12 md:pb-16 bg-white overflow-x-hidden w-full">
         <div className="container mx-auto max-w-4xl md:max-w-6xl px-4 md:px-6 w-full">

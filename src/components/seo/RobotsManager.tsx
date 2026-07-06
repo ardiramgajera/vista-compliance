@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet-async';
+import { isProductionEnvironment } from './seoConfig';
 
 export function RobotsManager() {
-  // If the environment is not explicitly 'production', inject the noindex tag.
-  // This protects staging, development, and preview URLs from being crawled.
-  const isProduction = import.meta.env.VITE_APP_ENV === 'production';
+  const isProduction = isProductionEnvironment();
 
   if (isProduction) {
     return null;

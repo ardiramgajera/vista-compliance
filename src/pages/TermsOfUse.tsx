@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import { PageSeo } from "@/components/seo/PageSeo";
 
 const TermsOfUse = () => {
   useEffect(() => {
@@ -10,6 +11,15 @@ const TermsOfUse = () => {
 
   return (
     <>
+      <PageSeo
+        title="Terms of Use"
+        description="Review the terms that govern access to and use of the ComplianceVista website and services."
+        path="/terms-of-use"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Terms of Use', path: '/terms-of-use' },
+        ]}
+      />
       <Navbar />
       <main className="min-h-screen pt-24 md:pt-32 pb-12 md:pb-16 bg-white overflow-x-hidden w-full">
         <div className="container mx-auto max-w-4xl md:max-w-6xl px-4 md:px-6 w-full">

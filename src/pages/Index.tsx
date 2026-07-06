@@ -86,6 +86,8 @@ const Index = () => {
       <PageSeo 
         title="Home"
         description="Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated compliance workflows."
+        path="/"
+        breadcrumbs={[{ name: 'Home', path: '/' }]}
       />
       <Navbar />
       <main>

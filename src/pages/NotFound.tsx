@@ -15,7 +15,7 @@ const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background relative overflow-hidden px-4">
       <Helmet>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex, nofollow, noarchive" />
       </Helmet>
       {/* Background decorative elements */}
       <motion.div
