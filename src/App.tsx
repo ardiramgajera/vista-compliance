@@ -7,12 +7,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { Agentation } from "agentation";
-import { AppLayout } from "@/components/AppLayout";
 import { RobotsManager } from "@/components/seo/RobotsManager";
 import { CanonicalManager } from "@/components/seo/CanonicalManager";
 
+import Index from "./pages/Index.tsx";
+
 // Lazy load page components to split javascript chunks and minimize initial load size
-const Index = lazy(() => import("./pages/Index.tsx"));
+const AppLayout = lazy(() => import("@/components/AppLayout").then(m => ({ default: m.AppLayout })));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const TermsOfUse = lazy(() => import("./pages/TermsOfUse.tsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));

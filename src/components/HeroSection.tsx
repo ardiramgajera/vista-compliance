@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import CalendlyModal from "./CalendlyModal";
+import { useState, lazy, Suspense } from "react";
+
+const CalendlyModal = lazy(() => import("./CalendlyModal"));
 
 const HeroSection = () => {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
@@ -26,22 +26,16 @@ const HeroSection = () => {
       <div className="container relative z-10 py-8 md:py-14">
         <div className="container">
           <div className="grid xl:grid-cols-2 gap-8 xl:gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              className="space-y-5 flex flex-col items-center xl:items-start text-center xl:text-left"
+            <div
+              className="space-y-5 flex flex-col items-center xl:items-start text-center xl:text-left animate-in slide-in-from-bottom-5 fade-in duration-700 fill-mode-both"
             >
               {/* Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 glass rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm mt-4 sm:mt-8 mb-0"
+              <div
+                className="inline-flex items-center gap-2 glass rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm mt-4 sm:mt-8 mb-0 animate-in slide-in-from-bottom-2 fade-in duration-700 delay-200 fill-mode-both"
               >
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-foreground/80 font-medium">Salesforce-Native Solution</span>
-              </motion.div>
+              </div>
 
               <h1 className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-extrabold leading-[1.2] text-foreground space-y-1 sm:space-y-2 whitespace-nowrap">
                 <div className="text-[#37C643] flex flex-col items-center xl:items-start">
@@ -53,14 +47,12 @@ const HeroSection = () => {
                   <span className="relative w-fit">
                     All inside Salesforce.
                     <svg className="absolute -bottom-2 sm:-bottom-4 left-0 w-full" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
-                      <motion.path
+                      <path
                         d="M2 10C50 6 150 6 198 10"
                         stroke="#39B44A"
                         strokeWidth="3"
                         strokeLinecap="round"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="animate-[draw_0.8s_ease-in-out_forwards] [stroke-dasharray:200] [stroke-dashoffset:200]"
                       />
                     </svg>
                   </span>
@@ -97,14 +89,11 @@ const HeroSection = () => {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* Hero graphic - Company Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              className="flex justify-center"
+            <div
+              className="flex justify-center animate-in slide-in-from-bottom-5 fade-in duration-700 delay-300 fill-mode-both"
             >
               <div className="relative pb-8">
                 {/* Background glow */}
@@ -124,11 +113,8 @@ const HeroSection = () => {
                 </div>
 
                 {/* Floating badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.2 }}
-                  className="absolute bottom-0 -left-4 glass rounded-2xl px-4 py-3 flex items-center gap-2 glow-primary float-animation"
+                <div
+                  className="absolute bottom-0 -left-4 glass rounded-2xl px-4 py-3 flex items-center gap-2 glow-primary float-animation animate-in zoom-in-90 fade-in duration-700 delay-1000 fill-mode-both"
                 >
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
                     <span className="text-primary-foreground text-xs font-bold">✓</span>
@@ -137,15 +123,19 @@ const HeroSection = () => {
                     <p className="text-xs font-bold text-foreground">Compliant</p>
                     <p className="text-[10px] text-muted-foreground">All checks passed</p>
                   </div>
-                </motion.div>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
         </div>
       </div>
 
-      <CalendlyModal isOpen={isCalendlyOpen} onClose={() => setIsCalendlyOpen(false)} />
+      {isCalendlyOpen && (
+        <Suspense fallback={null}>
+          <CalendlyModal isOpen={isCalendlyOpen} onClose={() => setIsCalendlyOpen(false)} />
+        </Suspense>
+      )}
     </section>
   );
 };

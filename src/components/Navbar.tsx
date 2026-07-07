@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ArrowUp } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import logo from "/ComplianceVista-logo.svg";
-import CalendlyModal from "./CalendlyModal";
+import { lazy, Suspense } from "react";
+
+const CalendlyModal = lazy(() => import("./CalendlyModal"));
 
 const navLinks = [
   { label: "Overview", href: "#overview" },
@@ -171,11 +172,8 @@ const Navbar = () => {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    <header
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 animate-in slide-in-from-top-full duration-500"
     >
       <div
         className={`container transition-all duration-500 ${
@@ -256,14 +254,9 @@ const Navbar = () => {
         </nav>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className={`lg:hidden overflow-hidden transition-shadow duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] ${
+      {mobileOpen && (
+          <div
+            className={`lg:hidden overflow-hidden transition-shadow duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] animate-in slide-in-from-top-4 fade-in duration-300 ${
               scrolled ? "mx-4 md:mx-8 mt-2 rounded-b-[2rem]" : ""
             }`}
           >
@@ -277,65 +270,55 @@ const Navbar = () => {
               {/* ✅ Removed duplicate "container" class — was preventing clicks on iPad */}
               <div className="px-4 py-4 flex flex-col gap-1">
                 {navLinks.map((link, index) => (
-                  <motion.button
+                  <button
                     key={link.href}
                     onClick={() => handleClick(link.href)}
                     aria-label={`Navigate to ${link.label} section`}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.08, duration: 0.3, ease: "easeOut" }}
-                    className={`text-left py-3 px-4 rounded-xl text-sm font-medium transition-colors ${
+                    className={`text-left py-3 px-4 rounded-xl text-sm font-medium transition-colors animate-in slide-in-from-left-4 fade-in duration-300 fill-mode-both ${
                       !isIndependentPage && activeSection === link.href.slice(1)
                         ? "text-[#37C643] bg-[#37C643]/10"
                         : "text-slate-800 hover:bg-slate-800/5"
                     }`}
                   >
                     {link.label}
-                  </motion.button>
+                  </button>
                 ))}
-                <motion.button
+                <button
                   onClick={() => {
                     setTimeout(() => setMobileOpen(false), 150);
                     setIsCalendlyOpen(true);
                   }}
                   aria-label="Book a product demo"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.08, duration: 0.3, ease: "easeOut" }}
-                  className="bg-[#37C643] text-white px-5 py-3 rounded-xl text-sm font-semibold mt-2"
+                  className="bg-[#37C643] text-white px-5 py-3 rounded-xl text-sm font-semibold mt-2 animate-in slide-in-from-left-4 fade-in duration-300 fill-mode-both delay-300"
                 >
                   Book Demo
-                </motion.button>
+                </button>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
 
-      <AnimatePresence>
-        {scrolled && showScrollTop && (
-          <motion.button
+      {scrolled && showScrollTop && (
+          <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            className={`fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full text-white shadow-lg hover:shadow-xl border flex items-center justify-center transition-all duration-300 ${
+            className={`fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full text-white shadow-lg hover:shadow-xl border flex items-center justify-center transition-all duration-300 animate-in zoom-in-50 fade-in duration-300 hover:scale-110 active:scale-95 ${
               isButtonOverColoredSection
                 ? "bg-[#069587] hover:bg-[#057a6e] border-[#057a6e]"
                 : "bg-[#37C643] hover:bg-[#2eaa38] border-[#2eaa38]"
             }`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
             aria-label="Scroll to top"
             title="Scroll to top"
           >
             <ArrowUp size={20} />
-          </motion.button>
+          </button>
         )}
-      </AnimatePresence>
 
-      <CalendlyModal isOpen={isCalendlyOpen} onClose={() => setIsCalendlyOpen(false)} />
-    </motion.header>
+      {isCalendlyOpen && (
+        <Suspense fallback={null}>
+          <CalendlyModal isOpen={isCalendlyOpen} onClose={() => setIsCalendlyOpen(false)} />
+        </Suspense>
+      )}
+    </header>
   );
 };
 
