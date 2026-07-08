@@ -40,7 +40,7 @@ const PrivacyPolicy = () => {
               <section className="space-y-4">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground">Privacy Notice</h2>
                 <p className="text-muted-foreground leading-relaxed text-sm md:text-base text-left">
-                  The website located at <a href="/" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">www.compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista," "the Company," "we," "us," and "our"). ComplianceVista respects your privacy and is committed to protecting your privacy through our compliance with this website privacy policy (the "Policy"). This Policy should be read in conjunction with our website{" "}
+                  The website located at <a href="/" target="_blank" rel="noopener noreferrer" style={{ color: '#37C643' }} className="hover:underline">compliancevista.com</a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("ComplianceVista," "the Company," "we," "us," and "our"). ComplianceVista respects your privacy and is committed to protecting your privacy through our compliance with this website privacy policy (the "Policy"). This Policy should be read in conjunction with our website{" "}
                   <Link to="/terms-of-use" style={{ color: '#37C643' }} className="hover:underline">
                     Terms of Use
                   </Link>

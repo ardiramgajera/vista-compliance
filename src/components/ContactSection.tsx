@@ -7,14 +7,42 @@ import { useRecaptcha } from "../hooks/useRecaptcha";
 // =====================================================
 // EDGE FUNCTION CONFIG
 // Use the production Supabase edge function for all submissions.
+// Variable names kept consistent with the shared "Ardira-Websites"
+// edge function used across all site frontends (Ardira, RV, AV, CV).
 // =====================================================
-const LEAD_SUBMIT_URL =
-  import.meta.env.VITE_LEAD_SUBMIT_URL;
+const FUNCTIONS_URL = import.meta.env.ARDIRA_SUPABASE_FUNCTIONS_URL;
+const ANON_KEY =
+  import.meta.env.ARDIRA_SUPABASE_ANON_KEY || import.meta.env.SUPABASE_ANON_KEY;
 
 // Identifies which brand's form this is, so the edge function knows
 // which sites/email_templates rows to use. Set VITE_SITE_ID per
 // deployment (ComplianceVista, RelationshipVista, AgentVista, Ardira).
-const SITE_ID = import.meta.env.VITE_SITE_ID || "ComplianceVista";
+// No hardcoded fallback — must be set in .env for every deployment.
+const SITE_ID = import.meta.env.VITE_SITE_ID;
+
+// =====================================================
+// FUTURE: PER-SITE RECAPTCHA SITE KEY MAP
+// Mirrors the RECAPTCHA_SECRET_KEY_MAP used server-side in the edge
+// function. Only needed once each site is issued its own reCAPTCHA
+// site/secret key pair. Until then, a single shared RECAPTCHA_SITE_KEY
+// is used for all sites (see below).
+//
+// TO SWITCH TO PER-SITE KEYS, DO ALL 3 STEPS:
+// 1. Uncomment RECAPTCHA_SITE_KEY_MAP and RECAPTCHA_SITE_KEY below.
+// 2. In useRecaptcha.ts: comment out its module-level RECAPTCHA_SITE_KEY
+//    constant, and instead accept siteKey as a param to loadRecaptcha()
+//    and executeRecaptcha() so this component can pass its resolved
+//    RECAPTCHA_SITE_KEY in.
+// 3. Add RECAPTCHA_SITE_KEY_AV / _RV / _CV to each site's .env
+//    (base RECAPTCHA_SITE_KEY stays as the Ardira / fallback key).
+// =====================================================
+// const RECAPTCHA_SITE_KEY_MAP: Record<string, string> = {
+//   "Ardira": import.meta.env.RECAPTCHA_SITE_KEY,
+//   "AgentVista": import.meta.env.RECAPTCHA_SITE_KEY_AV,
+//   "RelationshipVista": import.meta.env.RECAPTCHA_SITE_KEY_RV,
+//   "ComplianceVista": import.meta.env.RECAPTCHA_SITE_KEY_CV,
+// };
+// const RECAPTCHA_SITE_KEY = RECAPTCHA_SITE_KEY_MAP[SITE_ID] || import.meta.env.RECAPTCHA_SITE_KEY;
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
@@ -145,9 +173,9 @@ const ContactSection = () => {
     // If there are errors, don't submit
     if (Object.keys(validationErrors).length > 0) return;
 
-    if (!LEAD_SUBMIT_URL) {
-      console.error("Contact submit URL is not configured");
-      toast.error("Something went wrong. Please try again later.");
+    if (!FUNCTIONS_URL || !ANON_KEY || !SITE_ID) {
+      console.error("❌ Missing required env vars:", { FUNCTIONS_URL, ANON_KEY, SITE_ID });
+      setErrors({ form: "Configuration error. Please contact support@ardira.com directly." });
       return;
     }
 
@@ -168,9 +196,13 @@ const ContactSection = () => {
         recaptchaToken: token, // camelCase — matches edge function's destructured field
       };
 
-      const response = await fetch(LEAD_SUBMIT_URL, {
+      const response = await fetch(FUNCTIONS_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          apikey: ANON_KEY,
+          Authorization: `Bearer ${ANON_KEY}`,
+        },
         body: JSON.stringify(payload),
       });
 
@@ -423,7 +455,7 @@ const ContactSection = () => {
                   )}
 
                   <p className="text-xs text-slate-500 leading-relaxed">
-                    We're committed to your privacy. ComplianceVista uses the information you provide us to contact you about relevant content, products and services. You may unsubscribe from these communications at any time. For information, check out our{" "}
+                    We're committed to your privacy. {SITE_ID} uses the information you provide us to contact you about relevant content, products and services. You may unsubscribe from these communications at any time. For information, check out our{" "}
                     <a href="/privacy-policy" className="font-medium hover:underline" style={{ color: "#37C643" }}>Privacy Policy</a>.
                   </p>
 
