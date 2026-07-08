@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ArrowUp } from "lucide-react";
-import logo from "/ComplianceVista-logo.svg";
+import logo from "/logo.svg";
 import { lazy, Suspense } from "react";
 
 const CalendlyModal = lazy(() => import("./CalendlyModal"));

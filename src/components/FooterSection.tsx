@@ -1,4 +1,4 @@
-import logo from "/ComplianceVista-logo.svg";
+import logo from "/logo.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 const FooterSection = () => {
