@@ -123,8 +123,22 @@ const Navbar = () => {
         setMobileOpen(false);
       }
     };
+
+    const handleScroll = () => {
+      if (mobileOpen) {
+        setMobileOpen(false);
+      }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    if (mobileOpen) {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+    
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [mobileOpen]);
 
   const handleClick = (href: string) => {
