@@ -2,6 +2,23 @@
 <html lang="en">
 
 <head>
+  <!-- Google Tag Manager -->
+  <script>
+    setTimeout(function () {
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.google" + "tagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MS38XLX4");
+    }, 3500);
+  </script>
+  <!-- End Google Tag Manager -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light only" />
@@ -13,33 +30,10 @@
   <link rel="preload" href="/fonts/poppins-v20-latin-800.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Preconnect to external third-party script domains -->
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-  <link rel="preconnect" href="https://www.google.com" />
-  <link rel="dns-prefetch" href="https://www.google.com" />
-  <link rel="dns-prefetch" href="https://maps.googleapis.com" />
-  <!-- Google Tag Manager - Deferred to first user interaction for mobile performance -->
-  <script>
-    (function () {
-      var loaded = false;
-      function initGTM() {
-        if (loaded) return;
-        loaded = true;
-        (function (w, d, s, l, i) {
-          w[l] = w[l] || []; w[l].push({
-            'gtm.start':
-              new Date().getTime(), event: 'gtm.js'
-          }); var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-MS38XLX4');
-      }
-      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function (e) {
-        window.addEventListener(e, initGTM, { once: true, passive: true });
-      });
-      setTimeout(initGTM, 5000);
-    })();
-  </script>
-  <!-- End Google Tag Manager -->
+  <link rel="preconnect" href="https://www.googletagmanager.com/" />
+  <link rel="preconnect" href="https://www.google.com/" />
+  <link rel="dns-prefetch" href="https://www.google.com/" />
+  <link rel="dns-prefetch" href="https://maps.googleapis.com/" />
 
   <!-- Primary Meta Tags -->
   <title>ComplianceVista | Salesforce Compliance Management</title>
@@ -105,8 +99,7 @@
       "logo": "https://compliancevista.com/logo.svg",
       "description": "ComplianceVista is a 100% native Salesforce compliance management solution by Ardira Corporation. It automates assessments, vendor risk management, and audit workflows.",
       "sameAs": [
-        "https://compliancevista.com/",
-        "https://twitter.com/ComplianceVista"
+        "https://compliancevista.com/"
       ],
       "contactPoint": [
         {
