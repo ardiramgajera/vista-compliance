@@ -110,7 +110,7 @@ const Navbar = () => {
   }, [isIndependentPage]);
 
   const handleClick = (href: string) => {
-    setTimeout(() => setMobileOpen(false), 150);
+    setMobileOpen(false);
 
     const scrollToSection = (target: string) => {
       const id = target.startsWith("#") ? target.slice(1) : target;
@@ -285,7 +285,7 @@ const Navbar = () => {
                 ))}
                 <button
                   onClick={() => {
-                    setTimeout(() => setMobileOpen(false), 150);
+                    setMobileOpen(false);
                     setIsCalendlyOpen(true);
                   }}
                   aria-label="Book a product demo"
