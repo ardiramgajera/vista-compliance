@@ -19,6 +19,13 @@
   </script>
   <!-- End Google Tag Manager -->
 
+  <!-- Redirect www to non-www -->
+  <script>
+    if (window.location.hostname.startsWith('www.')) {
+      window.location.replace(window.location.href.replace('www.', ''));
+    }
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light only" />
@@ -37,9 +44,8 @@
 
   <!-- Primary Meta Tags -->
   <title>ComplianceVista | Salesforce Compliance Management</title>
-  <meta name="title" content="ComplianceVista | Salesforce Compliance Management">
-  <meta name="description"
-    content="Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated compliance workflows.">
+  <meta name="title" content="ComplianceVista | Salesforce Compliance Management" data-rh="true">
+  <meta name="description" content="Native Salesforce compliance management for audits, vendor risk, evidence tracking, and automated compliance workflows." data-rh="true">
   <meta name="keywords"
     content="Salesforce compliance, governance solution, compliance management, audit automation, vendor risk assessment, SurveyVista, enterprise compliance">
   <meta name="author" content="Ardira Technologies" />
@@ -66,7 +72,7 @@
   <meta property="twitter:image" content="https://compliancevista.com/company-images/cv-hero-new.webp">
   -->
 
-  <link id="canonical-link" rel="canonical" href="https://compliancevista.com/" />
+  <link id="canonical-link" rel="canonical" href="https://compliancevista.com/" data-rh="true" />
 
   <!-- Favicon - Multiple Sizes -->
   <link rel="icon" type="image/webp" href="/favicon.webp" sizes="any" />
