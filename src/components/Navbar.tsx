@@ -208,12 +208,12 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 animate-in slide-in-from-top-full duration-500"
     >
       <div
-        className={`w-full transition-all duration-500 ${
+        className={`container transition-all duration-500 ${
           scrolled
             ? isOverColoredSection
-              ? "bg-slate-900/80 backdrop-blur-xl shadow-md border-b border-slate-600/50"
-              : "bg-white/90 backdrop-blur-xl shadow-sm border-b border-black/5"
-            : "bg-transparent"
+              ? "mt-3 rounded-[2.5rem] bg-slate-900/80 backdrop-blur-xl shadow-[0_12px_48px_rgba(0,0,0,0.5)] border border-slate-600/50"
+              : "mt-3 rounded-[2.5rem] bg-white/50 backdrop-blur-xl shadow-[0_12px_48px_rgba(0,0,0,0.25)] border border-white/40"
+            : "mt-0 rounded-none bg-transparent"
         }`}
       >
         <nav className="container flex items-center justify-between transition-all duration-500 h-20">
@@ -290,13 +290,15 @@ const Navbar = () => {
       {mobileOpen && (
           <div
             id="mobile-nav-menu"
-            className={`lg:hidden w-full overflow-hidden transition-shadow duration-500 shadow-lg animate-in slide-in-from-top-4 fade-in duration-300 absolute top-full left-0`}
+            className={`lg:hidden overflow-hidden transition-shadow duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] animate-in slide-in-from-top-4 fade-in duration-300 ${
+              scrolled ? "mx-4 md:mx-8 mt-2 rounded-b-[2rem]" : ""
+            }`}
           >
             <div
               className={`backdrop-blur-xl w-full h-full transition-colors duration-500 ${
                 scrolled
-                  ? "bg-white border-b border-black/5"
-                  : "bg-white border-b border-black/5"
+                  ? "rounded-b-[2rem] bg-white border border-t-0 border-white/40"
+                  : "bg-white border-b border-white/20"
               }`}
             >
               {/* ✅ Removed duplicate "container" class — was preventing clicks on iPad */}
