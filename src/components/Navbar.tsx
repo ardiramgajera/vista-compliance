@@ -109,6 +109,24 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [isIndependentPage]);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const nav = document.getElementById("mobile-nav-menu");
+      const toggle = document.getElementById("mobile-menu-toggle");
+      if (
+        mobileOpen &&
+        nav &&
+        !nav.contains(e.target as Node) &&
+        toggle &&
+        !toggle.contains(e.target as Node)
+      ) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [mobileOpen]);
+
   const handleClick = (href: string) => {
     setMobileOpen(false);
 
@@ -176,12 +194,12 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 animate-in slide-in-from-top-full duration-500"
     >
       <div
-        className={`container transition-all duration-500 ${
+        className={`w-full transition-all duration-500 ${
           scrolled
             ? isOverColoredSection
-              ? "mt-3 rounded-[2.5rem] bg-slate-900/80 backdrop-blur-xl shadow-[0_12px_48px_rgba(0,0,0,0.5)] border border-slate-600/50"
-              : "mt-3 rounded-[2.5rem] bg-white/50 backdrop-blur-xl shadow-[0_12px_48px_rgba(0,0,0,0.25)] border border-white/40"
-            : "mt-0 rounded-none bg-transparent"
+              ? "bg-slate-900/80 backdrop-blur-xl shadow-md border-b border-slate-600/50"
+              : "bg-white/90 backdrop-blur-xl shadow-sm border-b border-black/5"
+            : "bg-transparent"
         }`}
       >
         <nav className="container flex items-center justify-between transition-all duration-500 h-20">
@@ -238,6 +256,7 @@ const Navbar = () => {
 
           {/* ✅ Changed lg:hidden to lg:hidden — hamburger shows on iPad (md) and below */}
           <button
+            id="mobile-menu-toggle"
             className={`lg:hidden w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
               !scrolled
                 ? "bg-slate-100/50 text-slate-900 hover:bg-slate-200/50"
@@ -256,15 +275,14 @@ const Navbar = () => {
 
       {mobileOpen && (
           <div
-            className={`lg:hidden overflow-hidden transition-shadow duration-500 shadow-[0_12px_48px_rgba(0,0,0,0.15)] animate-in slide-in-from-top-4 fade-in duration-300 ${
-              scrolled ? "mx-4 md:mx-8 mt-2 rounded-b-[2rem]" : ""
-            }`}
+            id="mobile-nav-menu"
+            className={`lg:hidden w-full overflow-hidden transition-shadow duration-500 shadow-lg animate-in slide-in-from-top-4 fade-in duration-300 absolute top-full left-0`}
           >
             <div
               className={`backdrop-blur-xl w-full h-full transition-colors duration-500 ${
                 scrolled
-                  ? "rounded-b-[2rem] bg-white border border-t-0 border-white/40"
-                  : "bg-white border-b border-white/20"
+                  ? "bg-white border-b border-black/5"
+                  : "bg-white border-b border-black/5"
               }`}
             >
               {/* ✅ Removed duplicate "container" class — was preventing clicks on iPad */}
