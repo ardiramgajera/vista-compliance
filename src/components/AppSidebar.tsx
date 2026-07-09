@@ -13,12 +13,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 
-const items = [
-  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
-  { title: "Compliance Tracker", url: "/compliance", icon: ShieldCheck },
-  { title: "Audit Log", url: "/audit", icon: ScrollText },
-  { title: "Settings", url: "/settings", icon: Settings },
-];
+const items: any[] = [];
 
 export function AppSidebar() {
   const currentPath = useLocation().pathname;

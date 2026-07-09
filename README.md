@@ -185,11 +185,7 @@ vista-compliance/
     │   ├── Index.tsx               # Homepage (section assembly)
     │   ├── PrivacyPolicy.tsx       # Privacy policy page
     │   ├── TermsOfUse.tsx          # Terms of use page
-    │   ├── NotFound.tsx            # 404 page
-    │   ├── Dashboard.tsx           # Dashboard page (internal)
-    │   ├── Compliance.tsx          # Compliance page (internal)
-    │   ├── Audit.tsx               # Audit page (internal)
-    │   └── Settings.tsx            # Settings page (internal)
+    │   └── NotFound.tsx            # 404 page
     ├── components/
     │   ├── Navbar.tsx              # Fixed navigation bar
     │   ├── HeroSection.tsx         # Hero banner
@@ -229,10 +225,6 @@ vista-compliance/
 | `/` | `Index.tsx` | Main landing page (all sections) |
 | `/terms-of-use` | `TermsOfUse.tsx` | Terms of use (legal) |
 | `/privacy-policy` | `PrivacyPolicy.tsx` | Privacy policy (legal) |
-| `/dashboard` | `Dashboard.tsx` | Internal dashboard (requires `AppLayout`) |
-| `/compliance` | `Compliance.tsx` | Internal compliance view |
-| `/audit` | `Audit.tsx` | Internal audit view |
-| `/settings` | `Settings.tsx` | Internal settings view |
 | `*` (catch-all) | `NotFound.tsx` | 404 page |
 
 ### Lazy Loading
